@@ -15,31 +15,33 @@ const port = process.env.PORT || 4000;
 connectDB();
 connectCloudinary();
 
-// ✅ Allow only your Vercel frontend origin
+// ✅ CORS config to allow only your frontend domain
 const corsOptions = {
-  origin: ["https://prescripto-backend-lake.vercel.app/"], // 🔁 replace with your actual frontend domain from Vercel
+  origin: ["https://vercel-frontend-topaz.vercel.app"], // ✅ Vercel frontend domain (no trailing slash)
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   credentials: true,
 };
 
-app.use(cors(corsOptions)); // ✅ Use secure CORS
+app.use(cors(corsOptions)); // ✅ Apply CORS
 app.use(express.json());
 
-// ✅ Debug incoming origins (optional)
+// ✅ Debugging incoming origins (optional)
 app.use((req, res, next) => {
   console.log("Incoming Origin:", req.headers.origin);
   next();
 });
 
-// API routes
+// ✅ API Routes
 app.use("/api/user", userRouter);
 app.use("/api/admin", adminRouter);
 app.use("/api/doctor", doctorRouter);
 
-// Test route
+// ✅ Test route
 app.get("/", (req, res) => {
   res.send("API Working from deployed backend");
 });
 
-// Start server
-app.listen(port, () => console.log(`✅ Server running on PORT: ${port}`));
+// ✅ Start server
+app.listen(port, () => {
+  console.log(`✅ Server running on PORT: ${port}`);
+});

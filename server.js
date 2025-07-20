@@ -17,7 +17,7 @@ connectCloudinary();
 
 // ✅ CORS config to allow only your frontend domain
 const corsOptions = {
-  origin: ["https://vercel-frontend-topaz.vercel.app"], // ✅ Vercel frontend domain (no trailing slash)
+  origin: ["https://vercel-frontend-topaz.vercel.app","https://prescripto-admin-weld.vercel.app"], // ✅ Vercel frontend domain (no trailing slash)
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   credentials: true,
 };
